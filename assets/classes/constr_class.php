@@ -23,17 +23,21 @@
             if ( ! $this->invalidName()){
                 // echo "Invalid Name";
                 header("location: ../index.html?error=name");
+                exit();
             }
             if ( ! $this->invalidFirstname()){
                 //echo "Invalid Firstname";
                 header("location: ../index.html?error=firstname");
+                exit();
             }
             if ( ! $this->invalidEmail() ){
                 //echo "Invalid Email";
                 header("location: ../index.html?error=email");
+                exit();
             }
             else{
-                $this->createComplain($this->name, $this->firstname, $this->email, $this->file, $this->description);
+                $right_desc = $this->invalidDescription();
+                $this->createComplain($this->name, $this->firstname, $this->email, $this->file, $right_desc);
                 header("location: ../index.html?error=none");
 
             }
@@ -71,16 +75,11 @@
             }
             return $result;
         }
-        private function invalidDescription(){
 
-            if ( !preg_match("/^[a-zA-Z0-9]+$/", $this->description)){
-                $result =false;
-            }
-            else{
-                $result = true;
-            }
-            return $result;
+        private function invalidDescription(){
+           return filter_var($this->description, FILTER_SANITIZE_STRING);
         }
+
         private  function invalidEmail(){
             if ( !filter_var( $this->email, FILTER_VALIDATE_EMAIL)){
                 $result = false;
