@@ -18,28 +18,28 @@
         public function addDB(){
             if ( ! $this->emptyInput()){
                 // echo "Empty Input";
-                header("location: ../index.php?error=emptyinput");
+                header("location: /hackers-poulette/index.php?error=emptyinput");
                 exit();
             }
             if ( ! $this->invalidName()){
                 // echo "Invalid Name";
-                header("location: ../index.php?error=name");
+                header("location: /hackers-poulette/index.php?error=name");
                 exit();
             }
             if ( ! $this->invalidFirstname()){
                 //echo "Invalid Firstname";
-                header("location: ../index.php?error=firstname");
+                header("location: /hackers-poulette/index.php?error=firstname");
                 exit();
             }
             if ( ! $this->invalidEmail() ){
                 //echo "Invalid Email";
-                header("location: ../index.php?error=email");
+                header("location: /hackers-poulette/index.php?error=email");
                 exit();
             }
             else{
                 $right_desc = $this->invalidDescription();
                 $this->createComplain($this->name, $this->firstname, $this->email, $this->file, $right_desc);
-                header("location: ../index.php?error=none");
+                header("location: /hackers-poulette/index.php?error=none");
 
             }
         }
