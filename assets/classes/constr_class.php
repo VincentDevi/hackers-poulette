@@ -36,6 +36,10 @@
                 header("location: /hackers-poulette/index.php?error=email");
                 exit();
             }
+            if ( ! $this->invalidFileExtension()){
+                // echo "Invalid file extension";
+                header("location:/hackers-poulette/index.php?error=file");
+            }
             else{
                 $right_desc = $this->invalidDescription();
                 $this->createComplain($this->name, $this->firstname, $this->email, $this->file, $right_desc);
@@ -83,6 +87,18 @@
 
         private  function invalidEmail(){
             if ( !filter_var( $this->email, FILTER_VALIDATE_EMAIL)){
+                $result = false;
+            }
+            else{
+                $result = true;
+            }
+            return $result;
+        }
+
+        private function invalidFileExtension(){
+            $allowed_extension = [ "jpg","png","gif"];
+            $extension = pathinfo($this->file,PATHINFO_EXTENSION);
+            if ( ! in_array($extension, $allowed_extension)){
                 $result = false;
             }
             else{

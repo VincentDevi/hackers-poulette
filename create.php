@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
     include "./assets/classes/pdo_class.php";
     include "./assets/classes/add_complain.php";
     include "./assets/classes/constr_class.php";

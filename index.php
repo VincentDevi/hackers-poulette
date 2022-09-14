@@ -53,6 +53,12 @@ if ( isset( $_GET["error"])){
 
         <label for="file">Import file: </label>
         <input type="file" name="file" value="" placeholder="Import your file">
+    <?php
+        if ( $error==="file"){
+            $message = " <p>Invalid File format, you can only use 'png, jpg, gif' extension</p>";
+            echo $message;
+        }
+    ?>
 
         <label for="description">Description: </label>
         <input type="text" name="description" value="" placeholder="Description">
