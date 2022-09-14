@@ -1,4 +1,18 @@
-<!DOCTYPE html>
+<?php
+    $message="";
+    if ( isset( $_GET["error"])){
+        $error = $_GET["error"];
+        if ( $error === "name"){
+            $message = "<p>Invalid name</p>";
+        }
+        elseif ( $error==="firstname"){
+            $message = "<p>Invalid firstname</p>";
+        }
+        elseif ( $error==="email"){
+            $message = "<p>Invalid email</p>";
+        }
+    }
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +20,7 @@
     <title>Hacker-Poulette</title>
 </head>
 <body>
+    <?php echo $message?>
     <form action="create.php" method="post">
         <label for="name">Your name: </label>
         <input type="text" name="name" value="" placeholder="Name">

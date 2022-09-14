@@ -5,6 +5,7 @@
         private $email;
         private $file;
         private $description;
+
         public function __construct($name,$firstname,$email,$file,$description)
         {
             $this->name = $name;
@@ -17,28 +18,28 @@
         public function addDB(){
             if ( ! $this->emptyInput()){
                 // echo "Empty Input";
-                header("location: ../index.html?error=emptyinput");
+                header("location: ../index.php?error=emptyinput");
                 exit();
             }
             if ( ! $this->invalidName()){
                 // echo "Invalid Name";
-                header("location: ../index.html?error=name");
+                header("location: ../index.php?error=name");
                 exit();
             }
             if ( ! $this->invalidFirstname()){
                 //echo "Invalid Firstname";
-                header("location: ../index.html?error=firstname");
+                header("location: ../index.php?error=firstname");
                 exit();
             }
             if ( ! $this->invalidEmail() ){
                 //echo "Invalid Email";
-                header("location: ../index.html?error=email");
+                header("location: ../index.php?error=email");
                 exit();
             }
             else{
                 $right_desc = $this->invalidDescription();
                 $this->createComplain($this->name, $this->firstname, $this->email, $this->file, $right_desc);
-                header("location: ../index.html?error=none");
+                header("location: ../index.php?error=none");
 
             }
         }
