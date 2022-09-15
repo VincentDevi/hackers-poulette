@@ -21,17 +21,19 @@
                 header("location: /hackers-poulette/index.php?error=emptyinput");
                 exit();
             }
-            if ( ! $this->invalidName()){
+            $name_sanitize = $this->sanitizeText($this->name);
+
+            if ( ! $this->invalidName() && ! $this->checkStrLength($name_sanitize)){
                 // echo "Invalid Name";
                 header("location: /hackers-poulette/index.php?error=name");
                 exit();
             }
-            if ( ! $this->invalidFirstname()){
+            if ( ! $this->invalidFirstname() && ! $this->checkStrLength($this->firstname)){
                 //echo "Invalid Firstname";
                 header("location: /hackers-poulette/index.php?error=firstname");
                 exit();
             }
-            if ( ! $this->invalidEmail() ){
+            if ( ! $this->invalidEmail() && ! $this->checkStrLength($this->email) ){
                 //echo "Invalid Email";
                 header("location: /hackers-poulette/index.php?error=email");
                 exit();
@@ -41,9 +43,11 @@
                 header("location:/hackers-poulette/index.php?error=file");
             }
             else{
-                $right_desc = $this->invalidDescription();
-                $this->createComplain($this->name, $this->firstname, $this->email, $this->file, $right_desc);
-                header("location: /hackers-poulette/index.php?error=none");
+                $right_desc = $this->sanitizeText($this->description);
+                if ( ! $this->checkStrLength($right_desc)) {
+                    $this->createComplain($this->name, $this->firstname, $this->email, $this->file, $right_desc);
+                    header("location: /hackers-poulette/index.php?error=none");
+                }
 
             }
         }
@@ -60,9 +64,8 @@
             return $result;
         }
 
-        private function invalidName(){
-
-            if ( !preg_match("/^[a-zA-Z]+$/", $this->name)){
+        private function invalidName($text){
+            if ( !preg_match("/^[a-zA-Z]+$/", $text)){
                 $result =false;
             }
             else{
@@ -70,9 +73,9 @@
             }
             return $result;
         }
-        private function invalidFirstname(){
-
-            if ( !preg_match("/^[a-zA-Z]+$/", $this->firstname)){
+        private function invalidFirstname($text){
+            $firstname_sanitize = $this->sanitizeText($this->firstname);
+            if ( !preg_match("/^[a-zA-Z]+$/", $text)){
                 $result =false;
             }
             else{
@@ -81,8 +84,8 @@
             return $result;
         }
 
-        private function invalidDescription(){
-           return filter_var($this->description, FILTER_SANITIZE_STRING);
+        private function sanitizeText($text){
+           return htmlspecialchars($text);
         }
 
         private  function invalidEmail(){
@@ -99,6 +102,15 @@
             $allowed_extension = [ "jpg","png","gif"];
             $extension = pathinfo($this->file,PATHINFO_EXTENSION);
             if ( ! in_array($extension, $allowed_extension)){
+                $result = false;
+            }
+            else{
+                $result = true;
+            }
+            return $result;
+        }
+        private function checkStrLength($inputText){
+            if ( strlen($inputText) < 1 ){
                 $result = false;
             }
             else{
