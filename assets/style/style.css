@@ -82,7 +82,7 @@ body {
 .alert {
   color: #E64848; }
 
-button {
+.form__button {
   height: 50px;
   width: 200px;
   color: #212121;

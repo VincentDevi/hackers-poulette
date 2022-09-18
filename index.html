@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link href="./assets/style/style.css" rel="stylesheet" type="text/css">
-    <script defer src="assets/js/validation.js"> </script>
     <title>Hacker-Poulette</title>
 
 </head>
 <body>
 <h1 class="title">Complaint form</h1>
 <div class="card">
-<form class="form" action="create.php" method="post">
+<form id="form" class="form" action="create.php" method="post">
             <label class="input" for="name">
                 <span class="input__label">Name</span>
                 <input id="name" class="input__field" type="text" name="name" value="" placeholder="Name" onfocusout="validateName()" required autocomplete="off">
@@ -35,8 +34,20 @@
                 <span class="input__label">Description</span>
                 <textarea id="description" class="input__field description"  name="description"  placeholder="Description" required ></textarea>
             </label>
-        <button class="form__button" type="submit" name="submit">Submit your form</button>
-    </form>
+
+
+
+    <button class="form__button"
+            type="submit"
+            name="submit"> Submit your form</button>
+
+
+</form>
+
 </div>
 </body>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lc7wgsiAAAAAP_QZQZbSwRhK73k8sdrkYyXXiJZ"></script>
+<script src="assets/js/validation.js"></script>
+
+
 </html>
