@@ -10,8 +10,9 @@ const checkIfElemExist = (elemId) =>{
 }
 
 const addElemValue = (text,elemId) =>{
-    const elem = document.createElement('p');
+    const elem = document.createElement('span');
     elem.id = 'error'+text;
+    elem.classList.add('alert');
     elem.innerHTML = 'Incorrect '+text;
     console.log(elem);
     const elemBefore = document.getElementById(elemId);

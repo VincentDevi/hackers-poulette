@@ -8,32 +8,35 @@
 
 </head>
 <body>
-
-<div class="aside">
-</div>
+<h1 class="title">Complaint form</h1>
+<div class="card">
 <form class="form" action="create.php" method="post">
+            <label class="input" for="name">
+                <span class="input__label">Name</span>
+                <input id="name" class="input__field" type="text" name="name" value="" placeholder="Name" onfocusout="validateName()" required autocomplete="off">
+            </label>
 
-        <label class="form__label" for="name">Your name: </label>
-        <input id="name" class="form__input" type="text" name="name" value="" placeholder="Name" onfocusout="validateName()">
+            <label class="input" for="firstname">
+                <span class="input__label">Firstname</span>
+                <input id="firstname" class="input__field" type="text" name="firstname" value="" placeholder="Firstname" onfocusout="validateFirstname()" required autocomplete="off">
+            </label>
 
-        <label class="form__label" for="firstname">Your First name: </label>
-        <input id="firstname" class="form__input" type="text" name="firstname" value="" placeholder="Firstname" onfocusout="validateFirstname()">
+            <label class="input" for="email">
+                <span class="input__label">Email</span>
+                <input id="email" class="input__field" type="email" name="email" value="" placeholder="Email" onfocusout="validateEmail()" required autocomplete="off">
+            </label>
 
-        <label class="form__label" for="email">Your Email address: </label>
-        <input id="email" class="form__input" type="email" name="email" value="" placeholder="Email" onfocusout="validateEmail()">
+            <label class="input" for="file">
+                <span class="input__label">Image</span>
+                <input id="file" class="input__field" type="file" name="file" value="" placeholder="Import your file">
+            </label>
 
-
-        <label class="form__label" for="file">Import file: </label>
-        <input id="file" class="form__input form__file" type="file" name="file" value="" placeholder="Import your file">
-
-
-        <label class="form__label" for="description">Description: </label>
-        <input id="description" class="form__input form__description" type="text" name="description" value="" placeholder="Description" >
-
-
-
+            <label class="input" for="description">
+                <span class="input__label">Description</span>
+                <input id="description" class="input__field description" type="text" name="description" value="" placeholder="Description" required autocomplete="off">
+            </label>
         <button class="form__button" type="submit" name="submit">Submit your form</button>
     </form>
-
+</div>
 </body>
 </html>

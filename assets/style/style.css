@@ -1,46 +1,89 @@
+@import url("https://rsms.me/inter/inter.css");
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none; }
+
+footer, header, nav, section, main {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0; }
+
 body {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  width: 100%;
-  height: 100vh; }
+  flex-direction: column;
+  align-items: center; }
 
-.aside {
-  order: 1;
-  width: 50%;
-  background-color: #6E85B7;
-  border-top-right-radius: 40px;
-  border-bottom-right-radius: 40px; }
+.title {
+  font-size: 2rem; }
+
+.card {
+  background: white;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  border: 3px solid #212121;
+  box-shadow: 0.5rem 0.5rem 0 #212121; }
 
 .form {
-  order: 100;
-  width: 50%;
+  width: 500px;
+  height: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center; }
-  .form__label {
-    width: 500px;
-    margin-bottom: -70px;
-    text-align: left; }
-  .form__input {
-    width: 500px;
-    height: 50px;
-    text-align: right; }
-  .form__button {
-    color: #090909;
-    padding: 0.7em 1.7em;
-    font-size: 18px;
-    border-radius: 0.5em;
-    background: #e8e8e8;
-    border: 1px solid #e8e8e8;
-    transition: all .3s;
-    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; }
-  .form__file {
-    border: solid;
-    text-align: center; }
-  .form__description {
-    height: 200px;
-    text-align: center; }
+
+.input {
+  position: relative;
+  width: 100%; }
+  .input__label {
+    width: 100%;
+    color: #fab700; }
+  .input__field {
+    width: 100%;
+    border: 3px solid #212121;
+    color: #212121;
+    border-radius: 4px; }
+
+.description {
+  height: 200px; }
+
+.alert {
+  color: #E64848; }
+
+button {
+  color: #212121;
+  background: #fab700;
+  border: none;
+  border-radius: 4px;
+  font-weight: 900; }
 
 /*# sourceMappingURL=style.css.map */
