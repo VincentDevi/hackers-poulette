@@ -1,0 +1,39 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="./assets/style/style.css" rel="stylesheet" type="text/css">
+    <script defer src="assets/js/validation.js"> </script>
+    <title>Hacker-Poulette</title>
+
+</head>
+<body>
+
+<div class="aside">
+</div>
+<form class="form" action="create.php" method="post">
+
+        <label class="form__label" for="name">Your name: </label>
+        <input id="name" class="form__input" type="text" name="name" value="" placeholder="Name">
+
+        <label class="form__label" for="firstname">Your First name: </label>
+        <input id="firstname" class="form__input" type="text" name="firstname" value="" placeholder="Firstname">
+
+        <label class="form__label" for="email">Your Email address: </label>
+        <input id="email" class="form__input" type="email" name="email" value="" placeholder="Email">
+
+
+        <label class="form__label" for="file">Import file: </label>
+        <input id="file" class="form__input form__file" type="file" name="file" value="" placeholder="Import your file">
+
+
+        <label class="form__label" for="description">Description: </label>
+        <input id="description" class="form__input form__description" type="text" name="description" value="" placeholder="Description">
+
+
+
+        <button class="form__button" type="submit" name="submit">Submit your form</button>
+    </form>
+
+</body>
+</html>

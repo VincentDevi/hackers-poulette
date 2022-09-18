@@ -16,38 +16,44 @@
         }
 
         public function addDB(){
+            $name_sanitize = $this->sanitizeText($this->name);
+            $firstname_sanitize = $this->sanitizeText(($this->firstname));
+            $description_sanitize = $this->sanitizeText($this->description);
+
+
             if ( ! $this->emptyInput()){
                 // echo "Empty Input";
-                header("location: /hackers-poulette/index.php?error=emptyinput");
+                header("location: /hackers-poulette/index.html");
                 exit();
             }
-            $name_sanitize = $this->sanitizeText($this->name);
 
-            if ( ! $this->invalidName() && ! $this->checkStrLength($name_sanitize)){
+            if ( ! $this->invalidName($name_sanitize) && ! $this->checkStrLength($name_sanitize)){
                 // echo "Invalid Name";
-                header("location: /hackers-poulette/index.php?error=name");
+                header("location: /hackers-poulette/index.html");
                 exit();
             }
-            if ( ! $this->invalidFirstname() && ! $this->checkStrLength($this->firstname)){
+            if ( ! $this->invalidFirstname($firstname_sanitize) && ! $this->checkStrLength($this->firstname)){
                 //echo "Invalid Firstname";
-                header("location: /hackers-poulette/index.php?error=firstname");
+                header("location: /hackers-poulette/index.html");
                 exit();
             }
             if ( ! $this->invalidEmail() && ! $this->checkStrLength($this->email) ){
                 //echo "Invalid Email";
-                header("location: /hackers-poulette/index.php?error=email");
+                header("location: /hackers-poulette/index.html");
                 exit();
             }
             if ( ! $this->invalidFileExtension()){
                 // echo "Invalid file extension";
-                header("location:/hackers-poulette/index.php?error=file");
+                header("location:/hackers-poulette/index.html");
+                exit();
+            }
+
+            if ( ! $this->checkStrLength($description_sanitize)) {
+                header("location: /hackers-poulette/index.html");
+                exit();
             }
             else{
-                $right_desc = $this->sanitizeText($this->description);
-                if ( ! $this->checkStrLength($right_desc)) {
-                    $this->createComplain($this->name, $this->firstname, $this->email, $this->file, $right_desc);
-                    header("location: /hackers-poulette/index.php?error=none");
-                }
+                $this->createComplain($name_sanitize, $firstname_sanitize, $this->email, $this->file, $description_sanitize);
 
             }
         }
