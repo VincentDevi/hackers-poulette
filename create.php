@@ -12,6 +12,7 @@
         echo "prout";
         $ob = new Construction($name,$firstname,$email,$file,$description);
         $ob->addDB();
+        header("location: index.html");
 
     }
 
